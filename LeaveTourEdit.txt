@@ -1,0 +1,192 @@
+USE [NHMS]
+GO
+/****** Object:  StoredProcedure [dbo].[LeaveTourEdit]    Script Date: 8/7/2023 3:03:35 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[LeaveTourEdit]
+@ID bigint,
+@EmployeeID  int,
+@LeaveTypeID int,
+@LeaveTypeT varchar(50),
+@LeaveFromDate date,
+@LeaveStatus varchar(5)='P',
+@Remarks nvarchar(max)=NULL,
+@ApprovalCategory nvarchar(10),
+@StatusUpdatedBy bigint,
+@Success int OUT,
+@Msg varchar(300) out
+
+AS
+BEGIN
+	BEGIN TRY
+		SET @Success=0
+		SET @ApprovalCategory=UPPER(@ApprovalCategory)
+		DECLARE @LeaveStatusID int=(SELECT StatusID FROM LeaveStatus WHERE StatusCode=@LeaveStatus)
+		
+		IF EXISTS(select distinct el.ID,el.EmployeeID 
+			from EmployeeLeaveApplication el
+			where convert(date,@LeaveFromDAte,103) between convert(date,el.LeaveFromDAte,103) and convert(date,el.LeaveToDate,103)
+			and el.EmployeeID=@EmployeeID and el.LeaveTypeID=@LeaveTypeID and el.LeaveTourCode=@LeaveTypeT AND el.IsPending=1
+		
+			union all 
+			select distinct el.ID,el.EmployeeID 
+			from EmployeeLeaveApplication el
+			where convert(date,@LeaveFromDAte,103) between convert(date,el.LeaveFromDAte,103) and convert(date,el.LeaveToDate,103)
+			and el.EmployeeID=@EmployeeID and el.LeaveTypeID=@LeaveTypeID and el.LeaveTourCode=@LeaveTypeT AND el.IsCancelled=1 and el.IsApproved=1
+			union all
+			select distinct el.ID,el.EmployeeID 
+			from EmployeeLeaveApplication el
+			where convert(date,@LeaveFromDAte,103) between convert(date,el.LeaveFromDAte,103) and convert(date,el.LeaveToDate,103)
+			and el.EmployeeID=@EmployeeID and el.LeaveTypeID=@LeaveTypeID and el.LeaveTourCode=@LeaveTypeT AND el.IsCancelled=1)
+	
+		BEGIN
+			--declare @Cancelrequestid bigint
+			--set @Cancelrequestid =isnull((select distinct el.EmployeeID 
+			--from EmployeeLeaveApplication el
+			--where convert(date,@LeaveFromDAte,103) between convert(date,el.LeaveFromDAte,103) and convert(date,el.LeaveToDate,103)
+			--and el.EmployeeID=@EmployeeID and el.LeaveTypeID=@LeaveTypeID and el.LeaveTourCode=@LeaveTypeT AND el.IsCancelled=1 and el.IsApproved=1),0)
+	
+			--if(@Cancelrequestid !=0)
+			--begin
+
+			--	if(@LeaveStatus='A')
+			--	begin
+			--		update  EmployeeLeaveApplication
+			--			set IsPending=1,IsApproved=0
+			--			where ID=@ID 
+
+			--		Delete from EmployeeLeaveApprovingDetail where ApprovalID in( 
+			--		select ed.ApprovalID 
+			--		from EmployeeLeaveApprovingDetail ed,LeaveStatus ls 
+			--		where ls.StatusID=ed.LeaveStatusID and ls.StatusCode='A' and ed.EmployeeLeaveID=@ID)
+
+			--		delete from EmployeeLeaveTypeBalanceDetail where LeaveAppID=@ID and EmployeeID=@Employeeid	
+					
+			--		SET @Success=6
+			--	end 
+			--	else if(@leavestatus='R')
+			--	begin
+			--		update  EmployeeLeaveApplication
+			--		set IsPending=1,IsCancelled=0,IsRejected=0
+			--		where ID=@ID
+		
+			--		Delete from EmployeeLeaveApprovingDetail where ApprovalID in( 
+			--		select ed.ApprovalID 
+			--		from EmployeeLeaveApprovingDetail ed,LeaveStatus ls 
+			--		where ls.StatusID=ed.LeaveStatusID and ls.StatusCode='C' and ed.EmployeeLeaveID=@ID)
+
+			--		SET @Success=7
+			--	end 
+			--END
+			--ELSE
+			--BEGIN
+				declare @leavetypeidO int 
+				set @leavetypeidO= (select LeaveTypeID from EmployeeLeaveApplication where ID=@ID)
+
+				--Medical Leave check
+				--if(@leavetypeidO=2 and @LeaveStatus='R')
+
+				--begin
+
+				--exec spaddautogenratedmltoel @intid,@Employeeid
+				--end 
+				
+				DECLARE @ApprovalCategoryID INT,@ApprovingLevel INT
+				IF @ApprovalCategory='N'	--NORMAL APPROVAL
+				BEGIN
+					SELECT @ApprovalCategoryID=CategoryID FROM ApprovalCategoryDetail WHERE CategoryLevel=1
+					SET @ApprovingLevel=0
+				END
+				ELSE IF @ApprovalCategory='F'	--FORWARDED
+				BEGIN
+					SELECT @ApprovalCategoryID=CategoryID FROM ApprovalCategoryDetail WHERE CategoryLevel=2
+					SET @ApprovingLevel=1
+					IF EXISTS(SELECT ApprovingLevel FROM EmployeeLeaveApprovingDetail WHERE EmployeeLeaveID=@ID AND ApprovalCategoryID=@ApprovalCategoryID)
+					BEGIN
+						SELECT @ApprovingLevel=MAX(ApprovingLevel)+1 FROM EmployeeLeaveApprovingDetail WHERE EmployeeLeaveID=@ID AND ApprovalCategoryID=@ApprovalCategoryID
+					END
+				END
+				ELSE IF @ApprovalCategory='SB'	--SEND BACK
+				BEGIN
+					SELECT @ApprovalCategoryID=CategoryID FROM ApprovalCategoryDetail WHERE CategoryLevel=3
+					SET @ApprovingLevel=1
+					IF EXISTS(SELECT ApprovingLevel FROM EmployeeLeaveApprovingDetail WHERE EmployeeLeaveID=@ID AND ApprovalCategoryID=@ApprovalCategoryID)
+					BEGIN
+						SELECT @ApprovingLevel=MAX(ApprovingLevel)+1 FROM EmployeeLeaveApprovingDetail WHERE EmployeeLeaveID=@ID AND ApprovalCategoryID=@ApprovalCategoryID
+					END
+				END
+					
+				BEGIN TRAN	
+				--Approve Leave 
+				IF(@LeaveStatus='A')
+				BEGIN
+					IF EXISTS(SELECT EmployeeID FROM EmployeeLeaveApplication WHERE ID=@ID AND IsForwarded=1 OR IsSendBack=1)
+					BEGIN
+						SELECT @ApprovingLevel=MAX(ApprovingLevel) FROM EmployeeLeaveApprovingDetail WHERE EmployeeLeaveID=@ID AND ApprovalCategoryID=@ApprovalCategoryID
+					END
+
+					INSERT INTO EmployeeLeaveApprovingDetail(EmployeeLeaveID,LeaveStatusID,ApprovalCategoryID,ApprovingLevel,StatusUpdatedBy,StatusUpdatedOn,Remarks)
+					VALUES(@ID,@LeaveStatusID,@ApprovalCategoryID,@ApprovingLevel,@StatusUpdatedBy,GETDATE(),@Remarks)
+					UPDATE EmployeeLeaveApplication SET IsApproved=1,IsPending=0 WHERE ID=@ID
+					SET @Success=1
+					SET @Msg='Leave approved'
+				END	
+				ELSE IF(@LeaveStatus='R')
+				BEGIN
+					INSERT INTO EmployeeLeaveApprovingDetail(EmployeeLeaveID,LeaveStatusID,ApprovalCategoryID,ApprovingLevel,StatusUpdatedBy,StatusUpdatedOn)
+					VALUES(@ID,@LeaveStatusID,@ApprovalCategoryID,@ApprovingLevel,@StatusUpdatedBy,GETDATE())
+					delete from EmployeeLeaveTypeBalanceDetail where LeaveAppID=@ID and EmployeeID=@Employeeid	
+					UPDATE EmployeeLeaveApplication SET IsRejected=1,IsPending=0 WHERE ID=@ID				
+					SET @Success=4
+					SET @Msg='Leave rejected'
+				END
+				ELSE IF(@LeaveStatus='C')
+				BEGIN
+					INSERT INTO EmployeeLeaveApprovingDetail(EmployeeLeaveID,LeaveStatusID,ApprovalCategoryID,ApprovingLevel,StatusUpdatedBy,StatusUpdatedOn)
+					VALUES(@ID,@LeaveStatusID,@ApprovalCategoryID,@ApprovingLevel,@StatusUpdatedBy,GETDATE())
+					delete from EmployeeLeaveTypeBalanceDetail where LeaveAppID=@ID and EmployeeID=@Employeeid	
+					UPDATE EmployeeLeaveApplication SET IsCancelled=1,IsPending=0 WHERE ID=@ID						
+					SET @Success=5
+					SET @Msg='Leave cancelled'
+				END
+				ELSE
+				BEGIN
+					SET @LeaveStatusID = (SELECT TOP 1 LeaveStatusID FROM EmployeeLeaveApprovingDetail WHERE EmployeeLeaveID=@ID ORDER BY LeaveStatusID DESC)
+					
+					INSERT INTO EmployeeLeaveApprovingDetail(EmployeeLeaveID,LeaveStatusID,ApprovalCategoryID,ApprovingLevel,StatusUpdatedBy,StatusUpdatedOn,Remarks)
+					VALUES(@ID,@LeaveStatusID,@ApprovalCategoryID,@ApprovingLevel,@StatusUpdatedBy,GETDATE(),@Remarks)
+
+					IF @ApprovalCategory='F'	--FORWARDED
+					BEGIN						
+						UPDATE EmployeeLeaveApplication SET IsForwarded=1 WHERE ID=@ID
+						SET @Success=2
+						SET @Msg='Leave forwarded'
+
+					END	
+					ELSE IF @ApprovalCategory='SB'	--SEND BACK
+					BEGIN						
+						UPDATE EmployeeLeaveApplication SET IsSendBack=1 WHERE ID=@ID
+						SET @Success=3
+						SET @Msg='Leave sent back'
+					END	
+				END	
+				
+				
+			--END
+				COMMIT TRAN
+		END
+		ELSE
+		BEGIN
+			SET @Success=8
+			SET @Msg='Pending leave does not exist'
+		END
+		
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRAN
+		SET @Success=0
+		SET @Msg=ERROR_MESSAGE()
+	END CATCH
+end 

@@ -144,11 +144,11 @@
             <!-- Left side column. contains the logo and sidebar -->
             <div class="row">
                 <nav class="navbar main-navbar-custom">
-                    <div>
+                    <%--<div>
                         <button data-target="#navbar-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button" aria-expanded="false">
                             Main Menu <i class="fa fa-bars"></i>
                         </button>
-                    </div>
+                    </div>--%>
                    
                     <!-- /.navbar-collapse -->
                 </nav>
@@ -161,6 +161,7 @@
                     <ul id="LeftMenuBar" class="sidebar-menu">
                        <li class='active' id="dash"><a href="Default.aspx"><i class="fa fa-chart-simple" style="color: #ffffff;"></i>&nbsp;&nbsp;Dashboard</a></li>
                         <li id="country"><a href="CountryDetail.aspx"><i class="fa fa-globe" style="color: #ffffff;"></i>&nbsp;&nbsp;Country</a></li>
+                        <li id="state"><a href="StateDetail.aspx"><i class="fa fa-landmark" style="color: #ffffff;"></i>&nbsp;&nbsp;State</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

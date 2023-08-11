@@ -194,6 +194,7 @@
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\loading.gif" />
     <Content Include="images\nhmlogo.png" />
     <Content Include="images\user.png" />
     <Content Include="js\accordion.jquery.js" />
@@ -242,6 +243,7 @@
     <Content Include="js\jquery.toaster.js" />
     <Content Include="js\jquery.waypoints.min.js" />
     <Content Include="js\main.js" />
+    <Content Include="js\Masters\MasterJs.js" />
     <Content Include="js\messages.css" />
     <Content Include="js\messages.js" />
     <Content Include="js\MillerPerforma.js" />
@@ -262,8 +264,10 @@
     <Content Include="js\XmlObject.js" />
     <Content Include="Login.aspx" />
     <Content Include="Officer\Default.aspx" />
+    <Content Include="Official\CityDetail.aspx" />
     <Content Include="Official\CountryDetail.aspx" />
     <Content Include="Official\Default.aspx" />
+    <Content Include="Official\DistrictDetail.aspx" />
     <Content Include="Official\StateDetail.aspx" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="plugins\bootstrap-slider\slider.css" />
@@ -1111,6 +1115,13 @@
     <Compile Include="Officer\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
+    <Compile Include="Official\CityDetail.aspx.cs">
+      <DependentUpon>CityDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\CityDetail.aspx.designer.cs">
+      <DependentUpon>CityDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Official\CountryDetail.aspx.cs">
       <DependentUpon>CountryDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1124,6 +1135,13 @@
     </Compile>
     <Compile Include="Official\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\DistrictDetail.aspx.cs">
+      <DependentUpon>DistrictDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\DistrictDetail.aspx.designer.cs">
+      <DependentUpon>DistrictDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Official\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

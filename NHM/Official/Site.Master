@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>NHM</title>
+    <title><%: Page.Title %></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <!-- Bootstrap 3.3.4 -->
@@ -51,6 +51,7 @@
     <script src="../Scripts/toastr.min.js"></script>
 
     <script src="../js/fetchurl.js"></script>
+    <%--<script src="../js/Masters/MasterJs.js"></script>--%>
 
     <style>
         .sidebar-menu li{
@@ -62,6 +63,7 @@
         }
     </style>
     <script>
+
         function SetActiveMenu(id) {
             $('#LeftMenuBar li').removeClass('active');
             $('#LeftMenuBar #' + id).addClass('active');
@@ -81,6 +83,27 @@
                 toastr.warning(style, message, { tapToDismiss: true, "closeButton": true });
             }
         }
+
+        $(window).on('load', function () {
+            $('#txtCode').on('keyup', function () {
+                var maxLength = 5;
+                var text = $(this).val();
+                $(this).val(text.toUpperCase());
+                var textLength = text.length;
+                if (textLength > maxLength) {
+                    $(this).val(text.substring(0, (maxLength)));
+                    toastr.warning("Warning ", "Sorry, only " + maxLength + " characters are allowed");
+                }
+            });
+            $('#txtPostalCode').on('keyup', function () {
+                var zipRegex = /^\d{6}$/;
+                var text = $(this).val();
+                if (!zipRegex.test(text)) {
+                    toastr.warning("Warning ", "Invalid postal code");
+                }
+            });
+        });
+       
     </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -161,7 +184,9 @@
                     <ul id="LeftMenuBar" class="sidebar-menu">
                        <li class='active' id="dash"><a href="Default.aspx"><i class="fa fa-chart-simple" style="color: #ffffff;"></i>&nbsp;&nbsp;Dashboard</a></li>
                         <li id="country"><a href="CountryDetail.aspx"><i class="fa fa-globe" style="color: #ffffff;"></i>&nbsp;&nbsp;Country</a></li>
-                        <li id="state"><a href="StateDetail.aspx"><i class="fa fa-landmark" style="color: #ffffff;"></i>&nbsp;&nbsp;State</a></li>
+                        <li id="state"><a href="StateDetail.aspx"><i class="fa fa-passport" style="color: #ffffff;"></i>&nbsp;&nbsp;State</a></li>
+                        <li id="district"><a href="DistrictDetail.aspx"><i class="fa fa-landmark" style="color: #ffffff;"></i>&nbsp;&nbsp;District</a></li>
+                        <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;City</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

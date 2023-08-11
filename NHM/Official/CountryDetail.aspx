@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Official/Site.Master" AutoEventWireup="true" CodeBehind="CountryDetail.aspx.cs" Inherits="NHM.Official.CountryDetail" %>
+﻿<%@ Page Title="Country Detail" Language="C#" MasterPageFile="~/Official/Site.Master" AutoEventWireup="true" CodeBehind="CountryDetail.aspx.cs" Inherits="NHM.Official.CountryDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Country Detail</title>
+    
     <script>
         //function toasterCheck() {
         //    toastr.success("Success", "To", {tapToDismiss:true,"closeButton":true});
@@ -80,8 +80,8 @@
             <div class="row">
                 <div class="form-group">
                     <input type="hidden" id="hdnCountryID" value="0" />
-                    <label id="lblCountryCode" for="txtCountryCode">Country Code</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtCountryCode" value="" class="form-control" placeholder="Country Code" />
+                    <label id="lblCode" for="txtCode">Country Code</label>&nbsp;<span class="requiredField">*</span>
+                    <input type="text" id="txtCode" value="" class="form-control" placeholder="Country Code" />
                 </div>
                 <div class="form-group">
                     <label id="lblCountryName" for="txtCountryName">Country Name</label>&nbsp;<span class="requiredField">*</span>
@@ -108,7 +108,7 @@
         //$.noConflict();
         var domainUrl = "";
         var hdnCountryID = $('#hdnCountryID');
-        var txtCountryCode = $('#txtCountryCode');
+        var txtCountryCode = $('#txtCode');
         var txtCountryName = $('#txtCountryName');
         var txtCountryCommun = $('#txtCountryCommun');
         var btnSave = $('#btnSave');

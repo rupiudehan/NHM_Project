@@ -115,6 +115,7 @@
         var myModalLabel = $('#myModalLabel');
         var body = $('#tbCountry');
         var table = $("#tblCountry");
+        var processedBy = sessionStorage.getItem("hrms");
 
         $(document).ready(function () {
             getUrl('../');            
@@ -173,12 +174,12 @@
             countryDetail.CountryCode = txtCountryCode.val();
             countryDetail.CountryName = txtCountryName.val();
             countryDetail.CommCode = txtCountryCommun.val();
-            countryDetail.ProcessedBy = "01650";
+            countryDetail.ProcessedBy = processedBy;
             var CountryId = hdnCountryID.val();
             var CountryCode = txtCountryCode.val().trim();
             var CountryName = txtCountryName.val().trim();
             var CommCode = txtCountryCommun.val().trim();
-            var processedBy = '01650';
+            
             if (CountryCode != '' && CountryName != '') {
                 if (CommCode != '' && CommCode > 0) {
                     $.ajax({

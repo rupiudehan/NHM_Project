@@ -83,7 +83,7 @@
                 </div>
                 <div class="form-group">
                     <label id="lblPostalCode" for="txtPostalCode">Postal Code</label>&nbsp;<span class="requiredField">*</span>    
-                    <input type="number" id="txtPostalCode" value="" class="form-control" placeholder="Postal Code" />
+                    <input type="number" id="txtPostalCode" value="" onKeyPress="if(this.value.length==6) return false;" class="form-control" placeholder="Postal Code" />
                 </div>
             </div>
           </div>
@@ -112,6 +112,7 @@
         var myModalLabel = $('#myModalLabel');
         var body = $('#tbody');
         var table = $("#tbl");
+        var processedBy = sessionStorage.getItem("hrms");
 
 
 
@@ -277,7 +278,6 @@
             var Code = txtCode.val().trim();
             var Name = txtName.val().trim();
             var postalCode = txtPostalCode.val().trim();
-            var processedBy = '01650';
             var zipRegex = /^\d{6}$/;
 
             if (Code != '' && Name != '' && districtID != '0' && districtID != '' & postalCode != '') {

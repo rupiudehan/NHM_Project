@@ -82,6 +82,7 @@
         var myModalLabel = $('#myModalLabel');
         var body = $('#tbDistrict');
         var table = $("#tblDistrict");
+        var processedBy = sessionStorage.getItem("hrms");
 
 
         $(document).ready(function () {
@@ -195,7 +196,6 @@
             var stateID = ddlState.val();
             var Code = txtCode.val().trim();
             var Name = txtName.val().trim();
-            var processedBy = '01650';
 
 
             if (Code != '' && Name != '' && stateID != '0' && stateID != '') {

@@ -194,6 +194,7 @@
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\logo.png" />
     <Content Include="images\loading.gif" />
     <Content Include="images\nhmlogo.png" />
     <Content Include="images\user.png" />

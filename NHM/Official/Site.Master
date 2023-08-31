@@ -26,6 +26,7 @@
     <!-- jvectormap -->
     <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css" />
     <link href="../Content/toastr.min.css" rel="stylesheet" />
+    <link href="../dist/css/loader_custom.css" rel="stylesheet" />
 
 
     <!-- Theme style -->
@@ -203,12 +204,16 @@
                         <li id="state"><a href="StateDetail.aspx"><i class="fa fa-passport" style="color: #ffffff;"></i>&nbsp;&nbsp;State</a></li>
                         <li id="district"><a href="DistrictDetail.aspx"><i class="fa fa-landmark" style="color: #ffffff;"></i>&nbsp;&nbsp;District</a></li>
                         <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;City</a></li>
+                       <%-- <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;City</a></li>--%>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
             </aside>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
+                <div class="ajax-loader">
+                    <img class="loader-img" src="../images/loading.gif" style="height: 120px;width: auto;" />
+                </div> 
                 <input type="hidden" id="hdnUrl" value="0"/>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="City Detail" Language="C#" MasterPageFile="~/Official/Site.Master" AutoEventWireup="true" CodeBehind="CityDetail.aspx.cs" Inherits="NHM.Official.CityDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .ajax-loader {
+        /*.ajax-loader {
   visibility: hidden;
   background-color: rgba(255,255,255,0.7);
   position: absolute;
@@ -9,12 +9,32 @@
   width: 100%;
   height:100%;
 }
-
-.ajax-loader img {
-  position: relative;
+        .ajax-loader {*/
+  /*position: relative;
   top:50%;
-  left:50%;
-}
+  left:50%;*/
+  /*position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:999999;
+  background:url(https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif) 50% 50% no-repeat rgb(15 10 10 /59%);
+}*/
+
+/*.ajax-loader img {*/
+  /*position: relative;
+  top:50%;
+  left:50%;*/
+  /*position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:999999;
+  background:url(https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif) 50% 50% no-repeat rgb(15 10 10 /59%);
+}*/
+
     </style> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -47,9 +67,9 @@
             </div>
         </div>
     
-    <div class="ajax-loader">
+   <%-- <div class="ajax-loader" id="loader">
         <img src="../images/loading.gif" id="image" class="img-responsive" />
-    </div>  
+    </div>  --%>
     <!-- Modal -->
     <div class="myModal modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -113,14 +133,17 @@
         var body = $('#tbody');
         var table = $("#tbl");
         var processedBy = sessionStorage.getItem("hrms");
+        var loader = $('.ajax-loader');
 
 
 
         $(document).ready(function () {
             getUrl('../');
+            $('#myModal').modal('hide');
             domainUrl = $('#hdnUrl').val();
             LoadCountries(domainUrl);
             LoadData(domainUrl);
+            loader.hide();
         });
 
         ddlCountry.on('change', function () {
@@ -158,10 +181,13 @@
                 dataType: "json",
                 async: false,
                 beforeSend: function () {
-                    $('#image').show();
+                    loader.show();
+                    btnSave.prop('disabled', false).css('cursor', 'not-allowed');
                 },
                 complete: function () {
-                    $('#image').hide();
+
+                    loader.hide();
+                    btnSave.prop('disabled', false).removeAttr('style');
                 },
                 success: function (data) {
                     if (data.isSucess) {
@@ -188,10 +214,10 @@
                     dataType: "json",
                     async: false,
                     beforeSend: function () {
-                        $('#image').show();
+                        loader.show();
                     },
                     complete: function () {
-                        $('#image').hide();
+                        loader.hide();
                     },
                     success: function (data) {
                         if (data.isSucess) {
@@ -220,10 +246,10 @@
                     dataType: "json",
                     async: false,
                     beforeSend: function () {
-                        $('#image').show();
+                        loader.show();
                     },
                     complete: function () {
-                        $('#image').hide();
+                        loader.hide();
                     },
                     success: function (data) {
                         if (data.isSucess) {
@@ -248,6 +274,12 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
+                beforeSend: function () {
+                    loader.show();
+                },
+                complete: function () {
+                    loader.hide();
+                },
                 success: function (data) {
                     if (data.isSucess) {
                         var count = 1;
@@ -289,6 +321,12 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         async: false,
+                        beforeSend: function () {
+                            loader.show();
+                        },
+                        complete: function () {
+                            loader.hide();
+                        },
                         success: function (data) {
                             if (data.responseData.success == 1) {
                                 setMessage("Success", data.message);
@@ -356,6 +394,12 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
+                beforeSend: function () {
+                    loader.show();
+                },
+                complete: function () {
+                    loader.hide();
+                },
                 success: function (data) {
                     if (data.responseData.success == 1) {
                         setMessage("Success", data.message);

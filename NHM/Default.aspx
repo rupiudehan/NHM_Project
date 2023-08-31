@@ -1,8 +1,15 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="NHM._Default" %>
+<asp:Content ID="HeaderContent" ContentPlaceHolderID="head" runat="server">
+  
+</asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+   <%-- <div class="ajax-loader" style="z-index:9999999;height:100%;width:100%">
+        <img src="../images/loading.gif" id="image" class="img-responsive"/>
+    </div>--%>
 
     <div class="*">
+     
 
         <div>
           <%--  <form class="login-form">--%>
@@ -21,10 +28,13 @@
             <%--</form>--%>
         </div>
     </div>
-
      <script type="text/javascript">
-        var domainUrl = "";
+         var domainUrl = "";
+         var btn = $('#btnLogin');
+         var loader = $('.ajax-loader');
          $(function () {
+             //$('#image').hide();
+             loader.hide();
             getUrl('/');
              domainUrl = $('#hdnUrl').val();
              //sessionStorage.clear();
@@ -40,7 +50,14 @@
                     url: domainUrl + 'app/GetLoginEmployee?username=' + username +'&password='+password,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    async: false,
+                    beforeSend: function () {
+                        loader.show();
+                        btn.prop('disabled', true).css('cursor', 'not-allowed');
+                    },
+                    complete: function () {
+                        loader.hide();
+                        btn.prop('disabled', false).removeAttr('style');
+                    },
                     success: function (data) {
                        
                         if (data.isSucess) {

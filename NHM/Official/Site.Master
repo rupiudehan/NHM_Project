@@ -212,6 +212,7 @@
                         <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;City</a></li>
                         <li id="assignAthority"><a href="AssignAuthority.aspx"><i class="fa fa-user" style="color: #ffffff;"></i>&nbsp;&nbsp;Assign Authority</a></li>
                         <li id="leave"><a href="LeaveCount.aspx"><i class="fa fa-calendar" style="color: #ffffff;"></i>&nbsp;&nbsp;Set Total Leaves</a></li>
+                        <li id="emp_branch"><a href="AssignBranchToEmployee.aspx"><i class="fa fa-arrow-right" style="color: #ffffff;"></i>&nbsp;&nbsp;Assign Branch</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

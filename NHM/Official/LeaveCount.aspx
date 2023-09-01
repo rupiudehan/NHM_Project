@@ -49,7 +49,7 @@
                  <input type="text" id="txtEmployee" value="" class="form-control" onchange="SetValue('Employee')" placeholder="Select Employee" />
              </div>
             <div class="form-group">
-                <label id="lblTotalCount" for="txtPostalCode">Total Count</label>&nbsp;<span class="requiredField">*</span>    
+                <label id="lblTotalCount" for="txtTotalCount">Total Count</label>&nbsp;<span class="requiredField">*</span>    
                 <input type="number" id="txtTotalCount" value="" class="form-control" placeholder="Total Count" />
             </div>
          </div>

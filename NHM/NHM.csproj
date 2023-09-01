@@ -267,6 +267,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Officer\Default.aspx" />
     <Content Include="Official\AssignAuthority.aspx" />
+    <Content Include="Official\AssignBranchToEmployee.aspx" />
     <Content Include="Official\CityDetail.aspx" />
     <Content Include="Official\CountryDetail.aspx" />
     <Content Include="Official\Default.aspx" />
@@ -1125,6 +1126,13 @@
     </Compile>
     <Compile Include="Official\AssignAuthority.aspx.designer.cs">
       <DependentUpon>AssignAuthority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\AssignBranchToEmployee.aspx.cs">
+      <DependentUpon>AssignBranchToEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\AssignBranchToEmployee.aspx.designer.cs">
+      <DependentUpon>AssignBranchToEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Official\CityDetail.aspx.cs">
       <DependentUpon>CityDetail.aspx</DependentUpon>

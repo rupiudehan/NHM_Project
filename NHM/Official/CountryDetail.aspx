@@ -116,11 +116,13 @@
         var body = $('#tbCountry');
         var table = $("#tblCountry");
         var processedBy = sessionStorage.getItem("hrms");
+        var loader = $('.ajax-loader');
 
         $(document).ready(function () {
             getUrl('../');            
             domainUrl=$('#hdnUrl').val();
             LoadCountries(domainUrl);
+            table.DataTable();
         });
 
         function ClearData() {
@@ -147,6 +149,13 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
+                beforeSend: function () {
+                    loader.show();
+                },
+                complete: function () {
+
+                    loader.hide();
+                },
                 success: function (data) {
                     if (data.isSucess) {
                         var count = 1;
@@ -165,7 +174,6 @@
                 }
 
             });
-            table.DataTable();
         }
 
         function SaveData() {
@@ -191,6 +199,15 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         async: false,
+                        beforeSend: function () {
+                            loader.show();
+                            btnSave.prop('disabled', false).css('cursor', 'not-allowed');
+                        },
+                        complete: function () {
+
+                            loader.hide();
+                            btnSave.prop('disabled', false).removeAttr('style');
+                        },
                         success: function (data) {
                             if (data.responseData.success == 1) {
                                 setMessage("Success", data.message);
@@ -253,6 +270,13 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
+                beforeSend: function () {
+                    loader.show();
+                },
+                complete: function () {
+
+                    loader.hide();
+                },
                 success: function (data) {
                     if (data.responseData.success == 1) {
                         setMessage("Success", data.message);

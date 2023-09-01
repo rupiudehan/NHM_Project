@@ -266,10 +266,12 @@
     <Content Include="js\XmlObject.js" />
     <Content Include="Login.aspx" />
     <Content Include="Officer\Default.aspx" />
+    <Content Include="Official\AssignAuthority.aspx" />
     <Content Include="Official\CityDetail.aspx" />
     <Content Include="Official\CountryDetail.aspx" />
     <Content Include="Official\Default.aspx" />
     <Content Include="Official\DistrictDetail.aspx" />
+    <Content Include="Official\LeaveCount.aspx" />
     <Content Include="Official\StateDetail.aspx" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="plugins\bootstrap-slider\slider.css" />
@@ -1117,6 +1119,13 @@
     <Compile Include="Officer\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
+    <Compile Include="Official\AssignAuthority.aspx.cs">
+      <DependentUpon>AssignAuthority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\AssignAuthority.aspx.designer.cs">
+      <DependentUpon>AssignAuthority.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Official\CityDetail.aspx.cs">
       <DependentUpon>CityDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1144,6 +1153,13 @@
     </Compile>
     <Compile Include="Official\DistrictDetail.aspx.designer.cs">
       <DependentUpon>DistrictDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\LeaveCount.aspx.cs">
+      <DependentUpon>LeaveCount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\LeaveCount.aspx.designer.cs">
+      <DependentUpon>LeaveCount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Official\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

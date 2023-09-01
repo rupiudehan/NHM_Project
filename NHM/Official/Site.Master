@@ -28,6 +28,9 @@
     <link href="../Content/toastr.min.css" rel="stylesheet" />
     <link href="../dist/css/loader_custom.css" rel="stylesheet" />
 
+    <!-- Jquery autocomplete -->    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
 
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/AdminLTE.css" />
@@ -47,12 +50,15 @@
     <script type="text/javascript" src="../plugins/sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Sweet alert cdn -->
-   <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+  <%-- <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">--%>
 
      <!-- Toaster -->
     <script src="../js/jquery.toaster.js"></script>
     <script src="../Scripts/toastr.min.js"></script>
+
+     <!-- Jquery autocomplete -->    
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <script src="../js/fetchurl.js"></script>
     <%--<script src="../js/Masters/MasterJs.js"></script>--%>
@@ -204,7 +210,8 @@
                         <li id="state"><a href="StateDetail.aspx"><i class="fa fa-passport" style="color: #ffffff;"></i>&nbsp;&nbsp;State</a></li>
                         <li id="district"><a href="DistrictDetail.aspx"><i class="fa fa-landmark" style="color: #ffffff;"></i>&nbsp;&nbsp;District</a></li>
                         <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;City</a></li>
-                       <%-- <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;City</a></li>--%>
+                        <li id="assignAthority"><a href="AssignAuthority.aspx"><i class="fa fa-user" style="color: #ffffff;"></i>&nbsp;&nbsp;Assign Authority</a></li>
+                        <li id="leave"><a href="LeaveCount.aspx"><i class="fa fa-calendar" style="color: #ffffff;"></i>&nbsp;&nbsp;Set Total Leaves</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

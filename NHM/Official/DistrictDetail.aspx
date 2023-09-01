@@ -90,6 +90,7 @@
             domainUrl=$('#hdnUrl').val();
             LoadCountries(domainUrl);
             LoadData(domainUrl);
+            table.DataTable();
         });        
 
         ddlCountry.on('change', function () {
@@ -187,7 +188,6 @@
                 }
 
             });
-            table.DataTable();
         }
 
         function SaveData() {

@@ -144,6 +144,7 @@
             LoadCountries(domainUrl);
             LoadData(domainUrl);
             loader.hide();
+            table.DataTable();
         });
 
         ddlCountry.on('change', function () {
@@ -182,12 +183,10 @@
                 async: false,
                 beforeSend: function () {
                     loader.show();
-                    btnSave.prop('disabled', false).css('cursor', 'not-allowed');
                 },
                 complete: function () {
 
                     loader.hide();
-                    btnSave.prop('disabled', false).removeAttr('style');
                 },
                 success: function (data) {
                     if (data.isSucess) {
@@ -300,7 +299,6 @@
                 }
 
             });
-            table.DataTable();
         }
 
         function SaveData() {

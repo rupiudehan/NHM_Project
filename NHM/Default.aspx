@@ -44,7 +44,7 @@
             $('#btnLogin').on('click', function () {
                 var username = $('#txtHrms').val();
                 var password = $('#txtPassword').val();
-                loader.show();
+                loader.hide();
                 $.ajax({
 
                     type: "GET",
@@ -60,7 +60,6 @@
                         btn.prop('disabled', false).removeAttr('style');
                     },
                     success: function (data) {
-                        loader.show();
                        
                         if (data.isSucess) {
                             $.each(data.responseData, function (index, value) {
@@ -76,16 +75,16 @@
                             
                         }
                         else {
-                            loader.hide();
+                            loader.show();
                             setMessage("Warning", 'Invalid user credentails');
                         }
                     },
                     failure: function (response) {
-                        loader.hide();
+                        loader.show();
                         setMessage("Error", response.responseText);
                     },
                     error: function (response) {
-                        loader.hide();
+                        loader.show();
                         setMessage("Error", response.responseText);
                     }
 

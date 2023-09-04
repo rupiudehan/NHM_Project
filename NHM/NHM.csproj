@@ -193,6 +193,9 @@
     <Content Include="dist\js\demo.js" />
     <Content Include="dist\js\pages\dashboard.js" />
     <Content Include="dist\js\pages\dashboard2.js" />
+    <Content Include="dist\TimePicker\css\nj-timepick.css" />
+    <Content Include="dist\TimePicker\js\time-picker.js" />
+    <Content Include="dist\TimePicker\js\timepicker-bs4.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\logo.png" />
@@ -222,6 +225,7 @@
     <Content Include="js\dw_sizerdx.js" />
     <Content Include="js\effects.js" />
     <Content Include="js\fetchurl.js" />
+    <Content Include="js\fm.timetator.jquery.js" />
     <Content Include="js\google_map.js" />
     <Content Include="js\highcharts.js" />
     <Content Include="js\ie-emulation-modes-warning.js" />
@@ -236,6 +240,7 @@
     <Content Include="js\jquery.autoheight.js" />
     <Content Include="js\jquery.countTo.js" />
     <Content Include="js\jquery.dataTables.min.js" />
+    <Content Include="js\jquery.dateandtime.js" />
     <Content Include="js\jquery.easing.1.3.js" />
     <Content Include="js\jquery.fancybox-1.2.1.pack - Copy.js" />
     <Content Include="js\jquery.fancybox-1.2.1.pack.js" />
@@ -272,7 +277,9 @@
     <Content Include="Official\CountryDetail.aspx" />
     <Content Include="Official\Default.aspx" />
     <Content Include="Official\DistrictDetail.aspx" />
+    <Content Include="Official\EmployeeManage.aspx" />
     <Content Include="Official\LeaveCount.aspx" />
+    <Content Include="Official\OfficeDetail.aspx" />
     <Content Include="Official\StateDetail.aspx" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="plugins\bootstrap-slider\slider.css" />
@@ -1162,12 +1169,26 @@
     <Compile Include="Official\DistrictDetail.aspx.designer.cs">
       <DependentUpon>DistrictDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Official\EmployeeManage.aspx.cs">
+      <DependentUpon>EmployeeManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\EmployeeManage.aspx.designer.cs">
+      <DependentUpon>EmployeeManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Official\LeaveCount.aspx.cs">
       <DependentUpon>LeaveCount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Official\LeaveCount.aspx.designer.cs">
       <DependentUpon>LeaveCount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\OfficeDetail.aspx.cs">
+      <DependentUpon>OfficeDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\OfficeDetail.aspx.designer.cs">
+      <DependentUpon>OfficeDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Official\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -1239,7 +1260,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>17987</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44346/</IISUrl>
+          <IISUrl>https://localhost:44347/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

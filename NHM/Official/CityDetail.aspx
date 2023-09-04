@@ -243,6 +243,7 @@
         }
 
         function LoadDistricts(domainUrl) {
+            var countryID = ddlState.val();
             var stateID = ddlState.val();
             ddlDistrict.empty();
             ddlDistrict.append($("<option></option>").val(0).html('--Select--'));
@@ -251,7 +252,7 @@
                 $.ajax({
 
                     type: "GET",
-                    url: domainUrl + 'app/GetDistricts/0/' + stateID +'/0',
+                    url: domainUrl + 'app/GetDistricts/0/' + stateID + '/' + countryID,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: false,
@@ -335,7 +336,7 @@
             var postalCode = txtPostalCode.val().trim();
             var zipRegex = /^\d{6}$/;
 
-            if (Code != '' && Name != '' && districtID != '0' && districtID != '' & postalCode != '') {
+            if (Code != '' && Name != '' && districtID != '0' && districtID != '' && postalCode != '') {
                 if (zipRegex.test(postalCode)) {
                     $.ajax({
 

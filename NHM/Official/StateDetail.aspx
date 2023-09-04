@@ -90,7 +90,6 @@
             domainUrl=$('#hdnUrl').val();
             LoadStates(domainUrl);
             LoadCountries(domainUrl);
-            table.DataTable();
         });
 
         function ClearData() {
@@ -124,6 +123,12 @@
                             ddlCountry.append($("<option></option>").val(value.countryId).html(value.countryName));
                         });
                     }
+                },
+                failure: function (response) {
+                    setMessage("Error", response.responseText);
+                },
+                error: function (response) {
+                    setMessage("Error", response.responseText);
                 }
 
             });
@@ -131,6 +136,7 @@
 
         function LoadStates(domainUrl) {
             body.empty();
+            table.DataTable().clear().destroy();
             $.ajax({
 
                 type: "GET",
@@ -154,9 +160,16 @@
                             body.append(tr);
                         });
                     }
+                },
+                failure: function (response) {
+                    setMessage("Error", response.responseText);
+                },
+                error: function (response) {
+                    setMessage("Error", response.responseText);
                 }
 
             });
+            table.DataTable();
         }
 
         function SaveData() {

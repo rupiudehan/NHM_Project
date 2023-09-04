@@ -90,7 +90,6 @@
             domainUrl=$('#hdnUrl').val();
             LoadCountries(domainUrl);
             LoadData(domainUrl);
-            table.DataTable();
         });        
 
         ddlCountry.on('change', function () {
@@ -128,6 +127,12 @@
                             ddlCountry.append($("<option></option>").val(value.countryId).html(value.countryName));
                         });
                     }
+                },
+                failure: function (response) {
+                    setMessage("Error", response.responseText);
+                },
+                error: function (response) {
+                    setMessage("Error", response.responseText);
                 }
 
             });
@@ -152,6 +157,12 @@
                                 ddlState.append($("<option></option>").val(value.stateID).html(value.stateName));
                             });
                         }
+                    },
+                    failure: function (response) {
+                        setMessage("Error", response.responseText);
+                    },
+                    error: function (response) {
+                        setMessage("Error", response.responseText);
                     }
 
                 });
@@ -161,6 +172,7 @@
 
         function LoadData(domainUrl) {
             body.empty();
+            table.DataTable().clear().destroy();
 
             $.ajax({
 
@@ -185,9 +197,16 @@
                             body.append(tr);
                         });
                     }
+                },
+                failure: function (response) {
+                    setMessage("Error", response.responseText);
+                },
+                error: function (response) {
+                    setMessage("Error", response.responseText);
                 }
 
             });
+            table.DataTable();
         }
 
         function SaveData() {

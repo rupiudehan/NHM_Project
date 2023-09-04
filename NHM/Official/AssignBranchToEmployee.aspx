@@ -18,7 +18,7 @@
                         <th>#</th>
                         <th>Employee</th>
                         <th>Branch</th>
-                        <th>Is Additional</th>
+                        <th>Is Additional Charge</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -86,7 +86,6 @@
         BindAutocomplete(employee, employeeID);
         LoadBranches(domainUrl);         
         LoadData(domainUrl);
-        table.DataTable();
     });
     function SetValue(txt) {
        
@@ -126,6 +125,12 @@
                         ddlType.append($("<option></option>").val(value.branchID).html(value.branchName));
                     });
                 }
+            },
+            failure: function (response) {
+                setMessage("Error", response.responseText);
+            },
+            error: function (response) {
+                setMessage("Error", response.responseText);
             }
 
         });
@@ -171,6 +176,7 @@
 
     function LoadData(domainUrl) {
         body.empty();
+        table.DataTable().clear().destroy();
         $.ajax({
 
             type: "GET",
@@ -205,6 +211,7 @@
             }
 
         });
+        table.DataTable();
         
     }
 

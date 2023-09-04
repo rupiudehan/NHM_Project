@@ -86,7 +86,6 @@
          BindAutocomplete(employee, employeeID);
          LoadLeaveTypes(domainUrl);         
          LoadData(domainUrl);
-         table.DataTable();
      });
      function SetValue(txt) {
         
@@ -126,6 +125,12 @@
                          ddlType.append($("<option></option>").val(value.leaveTypeID).html(value.leaveTypeName));
                      });
                  }
+             },
+             failure: function (response) {
+                 setMessage("Error", response.responseText);
+             },
+             error: function (response) {
+                 setMessage("Error", response.responseText);
              }
 
          });
@@ -171,6 +176,7 @@
 
      function LoadData(domainUrl) {
          body.empty();
+         table.DataTable().clear().destroy();
          $.ajax({
 
              type: "GET",
@@ -202,9 +208,16 @@
                          count++;
                      });
                  }
+             },
+             failure: function (response) {
+                 setMessage("Error", response.responseText);
+             },
+             error: function (response) {
+                 setMessage("Error", response.responseText);
              }
 
          });
+         table.DataTable();
          
      }
 

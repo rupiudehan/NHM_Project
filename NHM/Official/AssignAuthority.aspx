@@ -82,7 +82,6 @@
             BindAutocomplete(authority, authorityID);
             BindAutocomplete(employee, employeeID);
             LoadData(domainUrl);
-            table.DataTable();
         });
         function SetValue(txt) {
            
@@ -144,6 +143,7 @@
 
         function LoadData(domainUrl) {
             body.empty();
+            table.DataTable().clear().destroy();
             $.ajax({
 
                 type: "GET",
@@ -173,9 +173,16 @@
                             body.append(tr);
                         });
                     }
+                },
+                failure: function (response) {
+                    setMessage("Error", response.responseText);
+                },
+                error: function (response) {
+                    setMessage("Error", response.responseText);
                 }
 
             });
+            table.DataTable();
         }
 
         function SaveData() {

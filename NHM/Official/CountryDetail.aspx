@@ -122,7 +122,6 @@
             getUrl('../');            
             domainUrl=$('#hdnUrl').val();
             LoadCountries(domainUrl);
-            table.DataTable();
         });
 
         function ClearData() {
@@ -141,6 +140,7 @@
 
         function LoadCountries(domainUrl) {
             body.empty();
+            table.DataTable().clear().destroy();
             $.ajax({
 
                 type: "GET",
@@ -171,9 +171,16 @@
                             body.append(tr);
                         });
                     }
+                },
+                failure: function (response) {
+                    setMessage("Error", response.responseText);
+                },
+                error: function (response) {
+                    setMessage("Error", response.responseText);
                 }
 
             });
+            table.DataTable();
         }
 
         function SaveData() {

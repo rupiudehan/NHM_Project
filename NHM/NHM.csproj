@@ -130,6 +130,8 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Default.aspx" />
+    <Content Include="dist\clockpicker\css\clockpicker.css" />
+    <Content Include="dist\clockpicker\js\clockpicker.js" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\custom.css" />

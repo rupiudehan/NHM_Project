@@ -56,7 +56,7 @@
                         btn.prop('disabled', true).css('cursor', 'not-allowed');
                     },
                     complete: function () {
-                        loader.hide();
+                        loader.show();
                         btn.prop('disabled', false).removeAttr('style');
                     },
                     success: function (data) {
@@ -65,7 +65,7 @@
                             $.each(data.responseData, function (index, value) {
                                 var sessionValues = { name: value.employeeName, hrms: value.hrmsNo, designation: value.designationName, office: value.officeName };
                                 sessionStorage.setItem("sessionValue", sessionValues);
-                                //sessionStorage.setItem("id", value.employeeID);                           
+                                sessionStorage.setItem("id", value.employeeID);                           
                                 sessionStorage.setItem("name", value.employeeName);
                                 sessionStorage.setItem("hrms", value.hrmsNo);
                                 sessionStorage.setItem("designation", value.designationName);
@@ -75,16 +75,16 @@
                             
                         }
                         else {
-                            loader.show();
+                            loader.hide();
                             setMessage("Warning", 'Invalid user credentails');
                         }
                     },
                     failure: function (response) {
-                        loader.show();
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     },
                     error: function (response) {
-                        loader.show();
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     }
 

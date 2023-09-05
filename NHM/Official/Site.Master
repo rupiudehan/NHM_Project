@@ -65,6 +65,9 @@
     <link href="../dist/clockpicker/css/clockpicker.css" rel="stylesheet" />
     <script src="../dist/clockpicker/js/clockpicker.js"></script>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
     <style>
         .sidebar-menu li{
             width:229px;
@@ -217,6 +220,9 @@
                         <li id="emp_branch"><a href="AssignBranchToEmployee.aspx"><i class="fa fa-arrow-right" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign Branch</a></li>
                         <%--<li id="emp"><a href="EmployeeManage.aspx"><i class="fa fa-hammer" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manage Employees</a></li>--%>
                         <li id="office"><a href="OfficeDetail.aspx"><i class="fa fa-building" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Office</a></li>
+                        <li id="sim"><a href="SimMismatch.aspx"><i class="fa fa-sim-card" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimID Mismatch</a></li>
+                        <li id="unlock"><a href="UnlockLeaveDates.aspx"><i class="fa fa-calendar-days" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlock Leave Calendar</a></li>
+                        <li id="holiday"><a href="SimMismatch.aspx"><i class="fa fa-bookmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Gazetted Holidays</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

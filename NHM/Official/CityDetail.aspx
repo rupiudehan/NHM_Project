@@ -1,41 +1,5 @@
 ﻿<%@ Page Title="City Detail" Language="C#" MasterPageFile="~/Official/Site.Master" AutoEventWireup="true" CodeBehind="CityDetail.aspx.cs" Inherits="NHM.Official.CityDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        /*.ajax-loader {
-  visibility: hidden;
-  background-color: rgba(255,255,255,0.7);
-  position: absolute;
-  z-index: +100 !important;
-  width: 100%;
-  height:100%;
-}
-        .ajax-loader {*/
-  /*position: relative;
-  top:50%;
-  left:50%;*/
-  /*position:fixed;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  z-index:999999;
-  background:url(https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif) 50% 50% no-repeat rgb(15 10 10 /59%);
-}*/
-
-/*.ajax-loader img {*/
-  /*position: relative;
-  top:50%;
-  left:50%;*/
-  /*position:fixed;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  z-index:999999;
-  background:url(https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif) 50% 50% no-repeat rgb(15 10 10 /59%);
-}*/
-
-    </style> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
        <section class="content">
@@ -243,7 +207,7 @@
         }
 
         function LoadDistricts(domainUrl) {
-            var countryID = ddlState.val();
+            var countryID = ddlCountry.val();
             var stateID = ddlState.val();
             ddlDistrict.empty();
             ddlDistrict.append($("<option></option>").val(0).html('--Select--'));

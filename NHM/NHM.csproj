@@ -282,7 +282,9 @@
     <Content Include="Official\EmployeeManage.aspx" />
     <Content Include="Official\LeaveCount.aspx" />
     <Content Include="Official\OfficeDetail.aspx" />
+    <Content Include="Official\SimMismatch.aspx" />
     <Content Include="Official\StateDetail.aspx" />
+    <Content Include="Official\UnlockLeaveDates.aspx" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="plugins\bootstrap-slider\slider.css" />
     <Content Include="plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
@@ -1192,6 +1194,13 @@
     <Compile Include="Official\OfficeDetail.aspx.designer.cs">
       <DependentUpon>OfficeDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Official\SimMismatch.aspx.cs">
+      <DependentUpon>SimMismatch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\SimMismatch.aspx.designer.cs">
+      <DependentUpon>SimMismatch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Official\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1205,6 +1214,13 @@
     </Compile>
     <Compile Include="Official\StateDetail.aspx.designer.cs">
       <DependentUpon>StateDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\UnlockLeaveDates.aspx.cs">
+      <DependentUpon>UnlockLeaveDates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\UnlockLeaveDates.aspx.designer.cs">
+      <DependentUpon>UnlockLeaveDates.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="service.asmx.cs">

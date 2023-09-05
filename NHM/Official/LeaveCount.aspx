@@ -7,7 +7,7 @@
          <div class="box-header">
              <h3 class="box-title"><b>
                  <asp:Label ID="HeadingName" runat="server">Manage Total Leaves</asp:Label></b></h3>
-             <button type="button" id="btnManage" class="btn btn-success pull-right" onclick="ClearData()" data-toggle="modal" data-target="#myModal">Add</button>
+             <%--<button type="button" id="btnManage" class="btn btn-success pull-right" onclick="ClearData()" data-toggle="modal" data-target="#myModal">Add</button>--%>
          </div>
      </div>
      <div class="box-body">

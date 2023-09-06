@@ -83,6 +83,7 @@
         var body = $('#tbDistrict');
         var table = $("#tblDistrict");
         var processedBy = sessionStorage.getItem("hrms");
+        var loader = $('.ajax-loader');
 
 
         $(document).ready(function () {
@@ -121,6 +122,13 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
+                beforeSend: function () {
+                    loader.show();
+                },
+                complete: function () {
+
+                    loader.hide();
+                },
                 success: function (data) {
                     if (data.isSucess) {
                         $.each(data.responseData, function (index, value) {
@@ -129,9 +137,11 @@
                     }
                 },
                 failure: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 },
                 error: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 }
 
@@ -151,6 +161,13 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: false,
+                    beforeSend: function () {
+                        loader.show();
+                    },
+                    complete: function () {
+
+                        loader.hide();
+                    },
                     success: function (data) {
                         if (data.isSucess) {
                             $.each(data.responseData, function (index, value) {
@@ -159,9 +176,11 @@
                         }
                     },
                     failure: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     },
                     error: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     }
 
@@ -181,6 +200,13 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
+                beforeSend: function () {
+                    loader.show();
+                },
+                complete: function () {
+
+                    loader.hide();
+                },
                 success: function (data) {
                     if (data.isSucess) {
                         var count = 1;
@@ -199,9 +225,11 @@
                     }
                 },
                 failure: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 },
                 error: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 }
 
@@ -226,6 +254,13 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: false,
+                    beforeSend: function () {
+                        loader.show();
+                    },
+                    complete: function () {
+
+                        loader.hide();
+                    },
                     success: function (data) {
                         if (data.responseData.success == 1) {
                             setMessage("Success", data.message);
@@ -240,14 +275,17 @@
                         }
                     },
                     failure: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     },
                     error: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     }
                 });
             }
             else {
+                loader.hide();
                 setMessage("Warning", '(*) Marked fields are required');
             }
         }
@@ -285,6 +323,13 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
+                beforeSend: function () {
+                    loader.show();
+                },
+                complete: function () {
+
+                    loader.hide();
+                },
                 success: function (data) {
                     if (data.responseData.success == 1) {
                         setMessage("Success", data.message);
@@ -295,9 +340,11 @@
                     }
                 },
                 failure: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 },
                 error: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 }
             });

@@ -119,6 +119,13 @@
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              async: false,
+             beforeSend: function () {
+                 loader.show();
+             },
+             complete: function () {
+
+                 loader.hide();
+             },
              success: function (data) {
                  if (data.isSucess) {
                      $.each(data.responseData, function (index, value) {
@@ -127,9 +134,11 @@
                  }
              },
              failure: function (response) {
+                 loader.hide();
                  setMessage("Error", response.responseText);
              },
              error: function (response) {
+                 loader.hide();
                  setMessage("Error", response.responseText);
              }
 
@@ -165,7 +174,12 @@
                              return { label: values[0] + " (" + item.hrmsNo + ")", val: values[1] }
                          }))
                      },
+                     failure: function (response) {
+                         loader.hide();
+                         setMessage("Error", response.responseText);
+                     },
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
+                         loader.hide();
                          setMessage("Error", textStatus);
                      }
                  });
@@ -210,9 +224,11 @@
                  }
              },
              failure: function (response) {
+                 loader.hide();
                  setMessage("Error", response.responseText);
              },
              error: function (response) {
+                 loader.hide();
                  setMessage("Error", response.responseText);
              }
 
@@ -259,15 +275,18 @@
                          }
                      },
                      failure: function (response) {
+                         loader.hide();
                          setMessage("Error", response.responseText);
                      },
                      error: function (response) {
+                         loader.hide();
                          setMessage("Error", response.responseText);
                      }
                  });
              
          }
          else {
+             loader.hide();
              setMessage("Warning", '(*) Marked fields are required');
          }
      }

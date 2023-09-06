@@ -159,9 +159,11 @@
                     }
                 },
                 failure: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 },
                 error: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 }
 
@@ -195,9 +197,11 @@
                         }
                     },
                     failure: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     },
                     error: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     }
 
@@ -234,9 +238,11 @@
                         }
                     },
                     failure: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     },
                     error: function (response) {
+                        loader.hide();
                         setMessage("Error", response.responseText);
                     }
 
@@ -281,9 +287,11 @@
                     }
                 },
                 failure: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 },
                 error: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 }
 
@@ -329,18 +337,22 @@
                             }
                         },
                         failure: function (response) {
+                            loader.hide();
                             setMessage("Error", response.responseText);
                         },
                         error: function (response) {
+                            loader.hide();
                             setMessage("Error", response.responseText);
                         }
                     });
                 }
                 else {
+                    loader.hide();
                     setMessage("Warning", 'Invalid postal code');
                 }
             }
             else {
+                loader.hide();
                 setMessage("Warning", '(*) Marked fields are required');
             }
         }
@@ -398,9 +410,11 @@
                     }
                 },
                 failure: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 },
                 error: function (response) {
+                    loader.hide();
                     setMessage("Error", response.responseText);
                 }
             });

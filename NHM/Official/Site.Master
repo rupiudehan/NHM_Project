@@ -110,16 +110,41 @@
                     toastr.warning("Warning ", "Sorry, only " + maxLength + " characters are allowed");
                 }
             });
+
             //$('#txtPostalCode').on('onKeyUp', function () {
             //    var zipRegex = /^\d{6}$/;
             //    var text = $(this).val();
-            //    
+            //
             //    //if (zipRegex.test(text)) {
             //    //    //toastr.warning("Warning ", "Invalid postal code");
             //    //    return false;
             //    //}
             //});
         });
+        function validateZipCode(txtPostalCode) {
+            var zipRegex = /^\d{6}$/;
+            var text = $(this).val();
+            if (parseInt(text) > 0) {
+                return zipRegex.test(text);
+            } else {
+                return false;
+            }        
+        }
+        function validatePhone(txtPhone) {
+            var a = document.getElementById(txtPhone).value;
+            var filter = /[1-9]{1}[0-9]{9}/;
+            //if (a != '') {
+                if (parseInt(a) > 0) {
+                    
+                    return filter.test(a);
+                } else {
+                    return false;
+                }
+            //} else {
+            //    true;
+            //}
+        }
+
         $(function () {
             if (sessionStorage.getItem("sessionValue") == null) {
                 window.location.replace("../");
@@ -130,6 +155,22 @@
             $('#btnLogout').on('click', function () {
                 sessionStorage.clear();
                 window.location.replace("../");
+            });
+            $('#txtPostalCode').blur(function (e) {
+                if (validateZipCode('txtPostalCode')) {
+                    //toastr.warning("Warning ", "Invalid postal code");
+                }
+                else {
+                    toastr.warning("Warning ", "Invalid postal code");
+                }
+            });
+            $('#txtMobile').blur(function (e) {
+                if (validatePhone('txtMobile')) {
+                    //toastr.warning("Warning ", "Invalid postal code");
+                }
+                else {
+                    toastr.warning("Warning ", "Invalid mobile no.");
+                }
             });
         });
     </script>
@@ -218,7 +259,7 @@
                         <li id="assignAthority"><a href="AssignAuthority.aspx"><i class="fa fa-user" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign Authority</a></li>
                         <li id="leave"><a href="LeaveCount.aspx"><i class="fa fa-calendar" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set Total Leaves</a></li>
                         <li id="emp_branch"><a href="AssignBranchToEmployee.aspx"><i class="fa fa-arrow-right" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign Branch</a></li>
-                        <%--<li id="emp"><a href="EmployeeManage.aspx"><i class="fa fa-hammer" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manage Employees</a></li>--%>
+                        <li id="emp"><a href="EmployeeManage.aspx"><i class="fa fa-hammer" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manage Employees</a></li>
                         <li id="office"><a href="OfficeDetail.aspx"><i class="fa fa-building" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Office</a></li>
                         <li id="sim"><a href="SimMismatch.aspx"><i class="fa fa-sim-card" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimID Mismatch</a></li>
                         <li id="unlock"><a href="UnlockLeaveDates.aspx"><i class="fa fa-calendar-days" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlock Leave Calendar</a></li>

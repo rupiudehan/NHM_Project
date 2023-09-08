@@ -60,6 +60,7 @@
         BindAutocomplete(employee, employeeID);
         txtFromDate.datepicker({
             dateFormat: "dd/mm/yy",
+            minDate: "-7",
             maxDate: "+0m",
             onSelect: function (date) {
                 var dd = date.split("/");

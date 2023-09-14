@@ -45,6 +45,8 @@
                 var username = $('#txtHrms').val();
                 var password = $('#txtPassword').val();
                 loader.hide();
+                if (username != '' && password!='') {
+
                 $.ajax({
 
                     type: "GET",
@@ -56,7 +58,7 @@
                         btn.prop('disabled', true).css('cursor', 'not-allowed');
                     },
                     complete: function () {
-                        loader.show();
+                        loader.hide();
                         btn.prop('disabled', false).removeAttr('style');
                     },
                     success: function (data) {
@@ -75,8 +77,8 @@
                             
                         }
                         else {
-                            loader.hide();
                             setMessage("Warning", 'Invalid user credentails');
+                            loader.hide();
                         }
                     },
                     failure: function (response) {
@@ -89,6 +91,11 @@
                     }
 
                 });
+                }
+                else {
+                    setMessage("Warning", 'Username and password are required to login');
+                    loader.hide();
+                }
             });
         });
      </script>

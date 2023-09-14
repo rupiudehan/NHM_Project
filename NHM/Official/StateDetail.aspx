@@ -20,7 +20,7 @@
                             <th>Country</th>
                             <th>State Code</th>
                             <th>State Name</th>
-                            <th>Postal Code</th>
+                            <%--<th>Postal Code</th>--%>
                             <th></th>
                         </tr>
                     </thead>
@@ -47,16 +47,16 @@
                 <div class="form-group">
                     <input type="hidden" id="hdnStateID" value="0" />
                     <label id="lblCode" for="txtCode">State Code</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtCode" value="" class="form-control" placeholder="State Code" />
+                    <input type="text" id="txtCode" onkeypress='return validateAlphabets(event)' value="" class="form-control" placeholder="State Code" />
                 </div>
                 <div class="form-group">
                     <label id="lblStateName" for="txtCountryName">State Name</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtStateName" value="" class="form-control" placeholder="State Name" />
+                    <input type="text" id="txtStateName" onkeypress='return validateAlphabets(event)' value="" class="form-control" placeholder="State Name" />
                 </div>
-                <div class="form-group">
+                <%--<div class="form-group">
                     <label id="lblPostalCode" for="txtPostalCode">Postal Code</label>&nbsp;<span class="requiredField">*</span>    
                     <input type="number" id="txtPostalCode" onKeyPress="if(this.value.length==6) return false;"  value="" class="form-control" placeholder="Postal Code" />
-                </div>
+                </div>--%>
             </div>
           </div>
           <div class="modal-footer">
@@ -77,7 +77,7 @@
         var hdnStateID = $('#hdnStateID');
         var txtStateCode = $('#txtCode');
         var txtStateName = $('#txtStateName');
-        var txtPostalCode = $('#txtPostalCode');
+        //var txtPostalCode = $('#txtPostalCode');
         var btnSave = $('#btnSave');
         var myModalLabel = $('#myModalLabel');
         var body = $('#tbState');
@@ -103,7 +103,7 @@
             hdnStateID.val(0);
             txtStateCode.val('');
             txtStateName.val('');
-            txtPostalCode.val('');
+            //txtPostalCode.val('');
             btnSave.html('Add');
             myModalLabel.html('Add');
         }
@@ -169,7 +169,7 @@
                             tr += '<td class="countryId">' + value.countryName + '</td>';
                             tr += '<td class="stateCode">' + value.stateCode + '</td>';
                             tr += '<td class="stateName">' + value.stateName + '</td>';
-                            tr += '<td class="postalCode">' + value.postalCode + '</td>';
+                            //tr += '<td class="postalCode">' + value.postalCode + '</td>';
                             tr += '<td><button class="btn btn-warning btn-xs" id="txtEdit' + count + '" type="button" onclick="EditEntry(' + value.stateID + ',' + value.countryId + ',\'txtEdit' + count + '\')"><i class="fa fa-pencil"></i></button>  <button class="btn btn-danger btn-xs" id="txtDelete' + count++ + '" type="button"  onclick="deleteItem(' + value.stateID + ')"><i class="fa fa-trash"></i></button></td>';
                             tr += '</tr>';
                             body.append(tr);
@@ -195,12 +195,12 @@
             var CountryId = ddlCountry.val();
             var stateCode = txtStateCode.val().trim();
             var stateName = txtStateName.val().trim();
-            var postalCode = txtPostalCode.val().trim();
+            var postalCode = '';// txtPostalCode.val().trim();
             var zipRegex = /^\d{6}$/;
 
 
-            if (stateCode != '' && stateName != '' && CountryId != '0' && CountryId != '' & postalCode != '') {
-                if (zipRegex.test(postalCode)) {
+            if (stateCode != '' && stateName != '' && CountryId != '0' && CountryId != '') {
+                //if (zipRegex.test(postalCode)) {
                     $.ajax({
 
                         type: "POST",
@@ -236,11 +236,11 @@
                             setMessage("Error", response.responseText);
                         }
                     });
-                }
-                else {
-                    loader.hide();
-                    setMessage("Warning", 'Invalid postal code');
-                }
+                //}
+                //else {
+                //    loader.hide();
+                //    setMessage("Warning", 'Invalid postal code');
+                //}
             }
             else {
                 loader.hide();
@@ -259,9 +259,9 @@
                 } else if ($(this).attr('class') == "stateCode") {
                     txtStateCode.val($(this).html().trim());
                 }
-                else if ($(this).attr('class') == "postalCode") {
-                    txtPostalCode.val($(this).html().trim());
-                }
+                //else if ($(this).attr('class') == "postalCode") {
+                //    txtPostalCode.val($(this).html().trim());
+                //}
             });
             btnSave.html('Update');
             myModalLabel.html('Update');

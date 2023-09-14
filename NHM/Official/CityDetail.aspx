@@ -59,14 +59,14 @@
                 <div class="form-group">
                     <input type="hidden" id="hdnID" value="0" />
                     <label id="lblCode" for="txtCode">City Code</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtCode" value="" class="form-control" placeholder="City Code" />
+                    <input type="text"  onkeypress='return validateAlphabets(event)' id="txtCode" value="" class="form-control" placeholder="City Code" />
                 </div>
                 <div class="form-group">
                     <label id="lblName" for="txtName">City Name</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtName" value="" class="form-control" placeholder="City Name" />
+                    <input type="text" onkeypress='return validateAlphabets(event)' id="txtName" value="" class="form-control" placeholder="City Name" />
                 </div>
                 <div class="form-group">
-                    <label id="lblPostalCode" for="txtPostalCode">Postal Code</label>&nbsp;<span class="requiredField">*</span>    
+                    <label id="lblPostalCode" for="txtPostalCode">Postal Code</label>&nbsp;<%--<span class="requiredField">*</span>--%>    
                     <input type="number" id="txtPostalCode" value="" onKeyPress="if(this.value.length==6) return false;" class="form-control" placeholder="Postal Code" />
                 </div>
             </div>

@@ -49,7 +49,7 @@
                 <input type="text" id="txtEmployee" value="" class="form-control" onchange="SetValue('Employee')" placeholder="Select Employee" />
             </div>
            <div class="form-check"> 
-               <input type="checkbox" id="chkIsAdditional" value="" class="form-check-input" />
+               <input type="checkbox" id="chkIsAdditional" checked="checked" value="" class="form-check-input" />
                <label id="lblTotalCount" class="form-check-label" for="chkIsAdditional">Is Additional</label>
            </div>
         </div>
@@ -83,6 +83,7 @@
     $(document).ready(function () {
         getUrl('../');
         domainUrl = $('#hdnUrl').val();
+        chkIsAdditional.prop("checked", true);
         BindAutocomplete(employee, employeeID);
         LoadBranches(domainUrl);         
         LoadData(domainUrl);
@@ -99,7 +100,7 @@
     }
     function RestData() {
         ddlType.val(0);
-        chkIsAdditional.prop('checked', false);
+        //chkIsAdditional.prop('checked', false);
         employee.val('');
         employeeID.val('0');
         hdnID.val('0');

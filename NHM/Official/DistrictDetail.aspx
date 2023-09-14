@@ -51,11 +51,11 @@
                 <div class="form-group">
                     <input type="hidden" id="hdnDistrictID" value="0" />
                     <label id="lblCode" for="txtCode">District Code</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtCode" value="" class="form-control" placeholder="District Code" />
+                    <input type="text" id="txtCode"  onkeypress='return validateAlphabets(event)' value="" class="form-control" placeholder="District Code" />
                 </div>
                 <div class="form-group">
                     <label id="lblDistrictName" for="txtDistrictName">District Name</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtDistrictName" value="" class="form-control" placeholder="District Name" />
+                    <input type="text" id="txtDistrictName" onkeypress='return validateAlphabets(event)' value="" class="form-control" placeholder="District Name" />
                 </div>
             </div>
           </div>

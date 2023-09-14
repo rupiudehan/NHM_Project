@@ -197,7 +197,7 @@
             var assigningemployeeid = employeeID.val();
             var id = hdnID.val();
 
-            if (reportingauthorityid != '' && assigningemployeeid != '') {
+            if (reportingauthorityid != '' && reportingauthorityid != '0' && assigningemployeeid != '' && assigningemployeeid != '0') {
                 
                     $.ajax({
 

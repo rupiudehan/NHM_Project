@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <input type="hidden" id="hdnID" value="0" />
                                 <label id="lbleName" for="txtName">Office Name</label>&nbsp;<span class="requiredField">*</span>
-                                <input type="text" id="txtName" value="" class="form-control" placeholder="Office Name" />
+                                <input type="text" onkeypress='return validateAlphabets(event)' id="txtName" value="" class="form-control" placeholder="Office Name" />
                             </div>
                             <div class="form-group">
                                 <label id="lblLatitude" for="txtLatitude">Latitude</label>&nbsp;<span class="requiredField">*</span>
@@ -146,9 +146,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="ClearTimeData()">Close</button>
                         <button type="button" id="btnTimeSave" class="btn btn-primary" onclick="SaveTimeData()">Save</button>
-                        <button type="button" id="btnTimeReset" class="btn btn-warning" onclick="RestTime()">Reset</button>
+                        <button type="button" id="btnTimeReset" class="btn btn-warning" onclick="ResetTime()">Reset</button>
                     </div>
                 </div>
             </div>

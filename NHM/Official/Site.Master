@@ -101,7 +101,7 @@
 
         $(window).on('load', function () {
             $('#txtCode').on('keyup', function () {
-                var maxLength = 5;
+                var maxLength = 3;
                 var text = $(this).val();
                 $(this).val(text.toUpperCase());
                 var textLength = text.length;
@@ -110,6 +110,10 @@
                     toastr.warning("Warning ", "Sorry, only " + maxLength + " characters are allowed");
                 }
             });
+            $('#txtTotalCount').on('keyup', function () {
+                return validateDigitLength('txtTotalCount');
+            });
+            
 
             //$('#txtPostalCode').on('onKeyUp', function () {
             //    var zipRegex = /^\d{6}$/;
@@ -121,6 +125,11 @@
             //    //}
             //});
         });
+
+        function validateAlphabets(event) {
+            return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32));
+        }
+
         function validateZipCode(txtPostalCode) {
             var zipRegex = /^\d{6}$/;
             var text = $(this).val();
@@ -143,6 +152,23 @@
             //} else {
             //    true;
             //}
+        }
+
+        function validateDigitLength(txt) {
+            var maxLength = 2;
+            var minLength = 1;
+            var text = document.getElementById(txt).value;
+            var filter = /[1-9]{1}[0-9]{9}/;
+            if (parseInt(text) > 0) {
+                var textLength = text.length;
+                if (textLength > maxLength || textLength < minLength) { $('#' + txt).val(text.substring(0, (maxLength+1))); return false; }
+                else {
+                    return filter.test(text);
+                }
+                
+            } else {
+                return false;
+            }
         }
 
         $(function () {

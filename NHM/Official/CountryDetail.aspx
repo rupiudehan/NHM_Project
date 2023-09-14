@@ -81,15 +81,15 @@
                 <div class="form-group">
                     <input type="hidden" id="hdnCountryID" value="0" />
                     <label id="lblCode" for="txtCode">Country Code</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtCode" value="" class="form-control" placeholder="Country Code" />
+                    <input type="text" id="txtCode" value=""   onkeypress='return validateAlphabets(event)' class="form-control" placeholder="Country Code" />
                 </div>
                 <div class="form-group">
                     <label id="lblCountryName" for="txtCountryName">Country Name</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtCountryName" value="" class="form-control" placeholder="Country Name" />
+                    <input type="text" id="txtCountryName" onkeypress='return validateAlphabets(event)' value="" class="form-control" placeholder="Country Name" />
                 </div>
                 <div class="form-group">
                     <label id="lblCountryCommun" for="txtCountryCommun">Communication Code</label>&nbsp;<span class="requiredField">*</span>    
-                    <input type="number" id="txtCountryCommun" value="" class="form-control" placeholder="Communication Code" />
+                    <input type="number" id="txtCountryCommun" value="" class="form-control" onkeyup="return validateDigitLength('txtCountryCommun')" placeholder="Communication Code" />
                 </div>
             </div>
           </div>

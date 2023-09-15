@@ -86,16 +86,16 @@
 
         function setMessage(style, message) {
             if (style=="Success") {
-                toastr.success(style, message, { tapToDismiss: true, "closeButton": true });
+                toastr.success('', message, { tapToDismiss: true, "closeButton": true });
             }
             else if (style == "Error") {
-                toastr.error(style, message, { tapToDismiss: true, "closeButton": true });
+                toastr.error('', message, { tapToDismiss: true, "closeButton": true });
             }
             else if (style == "Info") {
-                toastr.info(style, message, { tapToDismiss: true, "closeButton": true });
+                toastr.info('', message, { tapToDismiss: true, "closeButton": true });
             }
             else if (style == "Warning") {
-                toastr.warning(style, message, { tapToDismiss: true, "closeButton": true });
+                toastr.warning('', message, { tapToDismiss: true, "closeButton": true });
             }
         }
 
@@ -289,7 +289,7 @@
                         <li id="office"><a href="OfficeDetail.aspx"><i class="fa fa-building" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Office</a></li>
                         <li id="sim"><a href="SimMismatch.aspx"><i class="fa fa-sim-card" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimID Mismatch</a></li>
                         <li id="unlock"><a href="UnlockLeaveDates.aspx"><i class="fa fa-calendar-days" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlock Leave Calendar</a></li>
-                        <li id="holiday"><a href="SimMismatch.aspx"><i class="fa fa-bookmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Gazetted Holidays</a></li>
+                        <li id="holiday"><a href="HolidayDetail.aspx"><i class="fa fa-bookmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Holidays</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

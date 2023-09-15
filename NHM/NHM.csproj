@@ -280,6 +280,7 @@
     <Content Include="Official\Default.aspx" />
     <Content Include="Official\DistrictDetail.aspx" />
     <Content Include="Official\EmployeeManage.aspx" />
+    <Content Include="Official\HolidayDetail.aspx" />
     <Content Include="Official\LeaveCount.aspx" />
     <Content Include="Official\OfficeDetail.aspx" />
     <Content Include="Official\SimMismatch.aspx" />
@@ -1179,6 +1180,13 @@
     </Compile>
     <Compile Include="Official\EmployeeManage.aspx.designer.cs">
       <DependentUpon>EmployeeManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\HolidayDetail.aspx.cs">
+      <DependentUpon>HolidayDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\HolidayDetail.aspx.designer.cs">
+      <DependentUpon>HolidayDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Official\LeaveCount.aspx.cs">
       <DependentUpon>LeaveCount.aspx</DependentUpon>

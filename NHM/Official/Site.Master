@@ -20,7 +20,11 @@
 
     <!-- Font Awesome -->
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />--%>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />--%>
+    <%--<link href="../dist/css/fontawesome.all.min.css" rel="stylesheet" />--%>
+    <link href="../fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+    <script src="../fontawesome/js/all.min.js"></script>
+    <script src="../fontawesome/js/fontawesome.min.js"></script>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
     <!-- jvectormap -->
@@ -219,7 +223,8 @@
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only" style="display:none;">Toggle navigation</span>
                     </a>
                     <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu">
@@ -277,19 +282,19 @@
                     <!-- Sidebar user panel -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul id="LeftMenuBar" class="sidebar-menu">
-                       <li class='active' id="dash"><a href="Default.aspx"><i class="fa fa-chart-simple" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</a></li>
-                        <li id="country"><a href="CountryDetail.aspx"><i class="fa fa-globe" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country</a></li>
-                        <li id="state"><a href="StateDetail.aspx"><i class="fa fa-passport" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State</a></li>
-                        <li id="district"><a href="DistrictDetail.aspx"><i class="fa fa-landmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;District</a></li>
-                        <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City</a></li>
-                        <li id="assignAthority"><a href="AssignAuthority.aspx"><i class="fa fa-user" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign Authority</a></li>
-                        <li id="leave"><a href="LeaveCount.aspx"><i class="fa fa-calendar" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set Total Leaves</a></li>
-                        <li id="emp_branch"><a href="AssignBranchToEmployee.aspx"><i class="fa fa-arrow-right" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign Branch</a></li>
-                        <li id="emp"><a href="EmployeeManage.aspx"><i class="fa fa-hammer" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manage Employees</a></li>
-                        <li id="office"><a href="OfficeDetail.aspx"><i class="fa fa-building" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Office</a></li>
-                        <li id="sim"><a href="SimMismatch.aspx"><i class="fa fa-sim-card" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimID Mismatch</a></li>
-                        <li id="unlock"><a href="UnlockLeaveDates.aspx"><i class="fa fa-calendar-days" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlock Leave Calendar</a></li>
-                        <li id="holiday"><a href="HolidayDetail.aspx"><i class="fa fa-bookmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Holidays</a></li>
+                       <li class='active' id="dash"><a href="Default.aspx"><i class="fa fa-chart-simple" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</a></li>
+                        <li id="country"><a href="CountryDetail.aspx"><i class="fa fa-globe" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country</a></li>
+                        <li id="state"><a href="StateDetail.aspx"><i class="fa fa-passport" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State</a></li>
+                        <li id="district"><a href="DistrictDetail.aspx"><i class="fa fa-landmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;District</a></li>
+                        <li id="city"><a href="CityDetail.aspx"><i class="fa fa-city" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City</a></li>
+                        <li id="assignAthority"><a href="AssignAuthority.aspx"><i class="fa fa-user" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign Authority</a></li>
+                        <li id="leave"><a href="LeaveCount.aspx"><i class="fa fa-calendar" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set Total Leaves</a></li>
+                        <li id="emp_branch"><a href="AssignBranchToEmployee.aspx"><i class="fa fa-arrow-right" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign Branch</a></li>
+                        <li id="emp"><a href="EmployeeManage.aspx"><i class="fa fa-hammer" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manage Employees</a></li>
+                        <li id="office"><a href="OfficeDetail.aspx"><i class="fa fa-building" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Office</a></li>
+                        <li id="sim"><a href="SimMismatch.aspx"><i class="fa fa-sim-card" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimID Mismatch</a></li>
+                        <li id="unlock"><a href="UnlockLeaveDates.aspx"><i class="fa fa-calendar-days" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlock Leave Calendar</a></li>
+                        <li id="holiday"><a href="HolidayDetail.aspx"><i class="fa fa-bookmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Holidays</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

@@ -15,7 +15,7 @@
         <div class="box-header">
             <h3 class="box-title"><b>
                 <asp:Label ID="HeadingName" runat="server">Manage Holiday Detail</asp:Label></b></h3>
-            <button type="button" id="btnWeekOff" class="btn btn-warning pull-right" onclick="SaveWeekOffData()" style="margin-left: 12px;">Add Week Offs</button>
+            <button type="button" id="btnWeekOff" class="btn btn-warning pull-right" onclick="SaveWeekOffData()" style="margin-left: 12px;">Add Week Ends</button>
             <button type="button" id="btnManage" class="btn btn-success pull-right" onclick="ClearData()" data-toggle="modal" data-target="#myModal">Add</button>
         </div>
     </div>

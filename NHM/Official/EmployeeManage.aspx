@@ -20,7 +20,7 @@
                         <th>HRMS</th>
                         <th>Designation</th>
                         <th>Office Name</th>                        
-                        <th>Is Inactive</th>
+                        <th>Is Inactive for Attendance</th>
                         <th>Update Mobile No.</th>
                     </tr>
                 </thead>
@@ -83,6 +83,7 @@
 
     function RestData() {
         txtMobile.val('');
+        $('#myModal').modal('hide');
     }
 
     function LoadData(domainUrl) {

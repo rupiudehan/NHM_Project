@@ -244,7 +244,7 @@
         var isAdditional = chkIsAdditional.prop('checked');
         var id = hdnID.val();
         
-        if (assigningemployeeid != '' && branchid != '') {
+        if (assigningemployeeid != '' && branchid != '' && assigningemployeeid != '0' && branchid != '0') {
             
                 $.ajax({
 

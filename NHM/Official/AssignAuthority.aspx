@@ -38,15 +38,15 @@
           <div class="modal-body">
             <div class="row">
                 <div class="form-group ui-widget ui-front">
+                    <input type="hidden" id="hdnEmployeeID" value="0" />
+                    <label id="lblEmployee" for="txtEmployee">Employee</label>&nbsp;<span class="requiredField">*</span>
+                    <input type="text" id="txtEmployee" value="" class="form-control" onchange="SetValue('Employee')" placeholder="Select Employee" />
+                </div>
+                <div class="form-group ui-widget ui-front">
                     <input type="hidden" id="hdnID" value="0" />
                     <input type="hidden" id="hdnAuthorityID" value="0" />
                     <label id="lblAuthority" for="txtAuthority">Authority</label>&nbsp;<span class="requiredField">*</span>
                     <input type="text" id="txtAuthority" value="" class="form-control" onchange="SetValue('Authority')" placeholder="Select Authority" />
-                </div>
-                <div class="form-group ui-widget ui-front">
-                    <input type="hidden" id="hdnEmployeeID" value="0" />
-                    <label id="lblEmployee" for="txtEmployee">Employee</label>&nbsp;<span class="requiredField">*</span>
-                    <input type="text" id="txtEmployee" value="" class="form-control" onchange="SetValue('Employee')" placeholder="Select Employee" />
                 </div>
             </div>
           </div>

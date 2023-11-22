@@ -295,6 +295,7 @@
                         <li id="sim"><a href="SimMismatch.aspx"><i class="fa fa-sim-card" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimID Mismatch</a></li>
                         <li id="unlock"><a href="UnlockLeaveDates.aspx"><i class="fa fa-calendar-days" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlock Leave Calendar</a></li>
                         <li id="holiday"><a href="HolidayDetail.aspx"><i class="fa fa-bookmark" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Holidays</a></li>
+                        <li id="year"><a href="YearDetail.aspx"><i class="fa fa-clock" style="color: #ffffff;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Current Year</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

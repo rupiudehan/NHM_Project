@@ -272,6 +272,7 @@
                     if (data.isSucess) {
                         var count = 1;
                         $.each(data.responseData, function (index, value) {
+                            var postalcode=value.cityPostalCode == null ? "-" : value.cityPostalCode;
                             var tr = '<tr class="d">';
                             tr += '<td scope="row">' + count + '</td>';
                             tr += '<td class="countryId">' + value.countryName + '</td>';
@@ -279,7 +280,7 @@
                             tr += '<td class="districtName">' + value.districtName + '</td>';
                             tr += '<td class="cityCode">' + value.cityCode + '</td>';
                             tr += '<td class="cityName">' + value.cityName + '</td>';
-                            tr += '<td class="cityPostalCode">' + value.cityPostalCode + '</td>';
+                            tr += '<td class="cityPostalCode">' + postalcode + '</td>';
                             tr += '<td><button class="btn btn-warning btn-xs" id="txtEdit' + count + '" type="button" onclick="EditEntry(' + value.cityID + ',' + value.districtID + ',' + value.stateID + ',' + value.countryId + ',\'txtEdit' + count + '\')"><i class="fa fa-pencil"></i></button>  <button class="btn btn-danger btn-xs" id="txtDelete' + count++ + '" type="button"  onclick="deleteItem(' + value.cityID + ')"><i class="fa fa-trash"></i></button></td>';
                             tr += '</tr>';
                             body.append(tr);
@@ -307,9 +308,17 @@
             var Name = txtName.val().trim();
             var postalCode = txtPostalCode.val().trim();
             var zipRegex = /^\d{6}$/;
+            var flag = 1;
 
-            if (Code != '' && Name != '' && districtID != '0' && districtID != '' && postalCode != '') {
-                if (zipRegex.test(postalCode)) {
+            if (Code != '' && Name != '' && districtID != '0' && districtID != '') {
+                if (postalCode != '') {
+                    if (zipRegex.test(postalCode)) {
+                        flag = 1
+                    } else {
+                        flag=0
+                    }
+                }
+                if (flag=1) {
                     $.ajax({
 
                         type: "POST",
